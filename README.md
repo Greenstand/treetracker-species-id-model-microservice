@@ -47,6 +47,12 @@ npm install
 
 3. ./scripts/setup-dev-database-passwords.sh
 
+#### Update an existing API to support ./scripts/setup-dev-database-passwords
+1. Copy `.env.*.example` to API root folder
+2. Copy `database/database.json.example` to API database folder
+3. Copy scripts folder to API root folder
+4. Set scripts/vars.sh to have the corret schema name
+
 ### Localhost database Setup
 
 This repository using db-migrate to manage database migrations for its schema.
