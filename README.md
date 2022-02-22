@@ -38,9 +38,16 @@ Install all necessary dependencies:
 npm install
 ```
 
+### Default development environment setup
 
+1. Ask engineering leads for a doctl dev token
 
-### Database Setup
+2. Install doctl command line tool
+  * MacOS: brew install doctl
+
+3. ./scripts/setup-dev-database-passwords.sh
+
+### Localhost database Setup
 
 This repository using db-migrate to manage database migrations for its schema.
 
