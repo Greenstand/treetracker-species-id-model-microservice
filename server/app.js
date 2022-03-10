@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 
 const log = require('loglevel');
-const { sentryDSN } = require('../config/config');
 const HttpError = require('./utils/HttpError');
 const { errorHandler } = require('./utils/utils');
 const { handlerWrapper } = require('./utils/utils');

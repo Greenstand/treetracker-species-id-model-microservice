@@ -25,7 +25,8 @@
     "db-migrate-ci": "cd database; db-migrate up",
     "db-migrate-dev": "cd database; db-migrate --env dev up; db-migrate --env integration up",
     "prepare": "husky install",
-    "pre-commit": "npm run lint"
+    "pre-commit": "npm run lint",
+    "seed-dev": "NODE_ENV=development knex seed:run"
   },
   "keywords": [
     "ecology"
@@ -35,6 +36,10 @@
   "dependencies": {
     "@sentry/node": "^5.1.0",
     "body-parser": "^1.18.2",
+    "chai-like": "^1.1.1",
+    "chai-things": "^0.2.0",
+    "cores": "^0.8.5",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "expect": "^26.4.2",
     "expect-runtime": "^0.7.0",
