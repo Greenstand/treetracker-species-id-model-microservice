@@ -1,7 +1,7 @@
 {
   "dev": {
     "driver": "pg",
-    "user" : "m_messaging",
+    "user" : "m_{SCHEMA}",
     "password" : "{MIGRATION_PASSWORD}",
     "database" : "treetracker",
     "host" : "db-postgresql-sfo2-nextgen-do-user-1067699-0.db.ondigitalocean.com",
