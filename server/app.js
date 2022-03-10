@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const Sentry = require('@sentry/node');
-// const walletRouter = require("./routes/entityRouter"); // create your router
 
 const log = require('loglevel');
 const { sentryDSN } = require('../config/config');
@@ -16,8 +14,6 @@ if (process.env.NODE_ENV === 'development') {
   log.info('disable cors');
   app.use(cors());
 }
-
-Sentry.init({ dsn: sentryDSN });
 
 /*
  * Check request
@@ -49,7 +45,7 @@ app.use('/', router);
 // Global error handler
 app.use(errorHandler);
 
-const { version } = require('../package.json');
+const {version} = require('../package.json');
 
 app.get('*', function (req, res) {
   res.status(200).send(version);
