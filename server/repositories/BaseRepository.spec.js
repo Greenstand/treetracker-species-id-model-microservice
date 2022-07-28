@@ -32,9 +32,6 @@ describe('BaseRepository', () => {
     expect(entity).property('id').eq(1);
   });
 
-  // TODO
-  it.skip('getById can not find result, should throw 404', () => {});
-
   describe.only('getByFilter', () => {
     it('getByFilter', async () => {
       tracker.uninstall();
