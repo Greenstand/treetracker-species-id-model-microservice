@@ -37,6 +37,14 @@ Install all necessary dependencies:
 ```
 npm install
 ```
+Generate Initial Code:
+
+```
+cd scripts
+sh generate-resource.sh
+```
+
+The above commands would generate an initial set of endpoints for the resource put it using our defined code structure
 
 ### Default development environment setup
 
@@ -73,37 +81,27 @@ Documentation for db-migrate: https://db-migrate.readthedocs.io/en/latest/
 
 # Architecture of this project
 
-This project use multiple layer structure to build the whole system. Similar with MVC structure:
+Our microservices use multiple layer structure to build the whole system. Similar with MVC structure:
 
-![layers](/layers.png "layers")
-
-
-* **Protocol layer**
-
-Wallet API offers RESTFul API interace based on HTTP protocol. We use Express to handle all HTTP requests.
-
-The Express-routers work like the controller role in MVC, they receive the requests and parameters from client, and translate it and dispatch tasks to appropriate business objects. Then receive the result from them, translate to the 'view', the JSON response, to client.
-
-* **Service layer**
-
-Both service layer and model layer are where all the business logic is located. Comparing to the Model , `service` object don't have state (stateless).  
-
-Please put business logic code into service object when it is hard to put them into the `Model` object.
-
-Because we didn't use Factory or dependency injection to create object, so service layer also can be used as Factory to create `model` object.
-
-* **Model layer**
-
-The business model, major business logic is here. They are real object, in the perspective of object oriented programming: they have states, they have the method to do stuff. 
-
-There are more discussion about this, check below selection.
-
-* **Repository layer**
-
-Repository is responsible for communicate with the real database, this isolation brings flexibility for us, for example, we can consider replace the implementation of the storage infrastructure in the future.
-
-All the SQL statements should be here.
-
+## **Handler**
+ *  HTTP Domain
+ *  All error and success codes
+ *  API payload validation
+ *  Calls a service or a model function
+   
+## **Service**
+ *  Orchestration between services and the domain model
+    *  Database session
+    *  External APIs
+    *  Cloud Services (such as RabbitMQ or S3)
+      
+## **Model**
+ *  Domain logic
+ *  Accesses repositories
+   
+## **Repository**
+ *  Accesses the database, performs CRUD operations 
+ *  One repository for each database table in RDMS
 
 
 # How to test
