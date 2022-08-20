@@ -1,1 +1,0 @@
-// handler for resource endpoints
