@@ -44,7 +44,7 @@ cd scripts
 sh generate-resource.sh
 ```
 
-The above commands would generate an initial set of endpoints for the resource put it using our defined code structure
+The above commands would generate an initial set of endpoints for the resource using our defined code structure
 
 ### Default development environment setup
 
