@@ -1,15 +1,6 @@
-/*
- * A object to indicate current session, currently, use for database session, like a transaction session.
- * So with knowing the current database transaction session, we can easily break the current process, and
- * rollback the operation, and if encounter any accidentally problem or failure, we can rollback all
- * operations.
- *
- */
-
-const knex = require('./knex');
-
-class Session {
-  constructor() {
+class BaseSession {
+  constructor(knex) {
+    this._knex = knex;
     this.thx = undefined;
   }
 
@@ -17,7 +8,7 @@ class Session {
     if (this.thx) {
       return this.thx;
     }
-    return knex;
+    return this._knex;
   }
 
   isTransactionInProgress() {
@@ -28,7 +19,7 @@ class Session {
     if (this.thx) {
       throw new Error('Can not start transaction in transaction');
     }
-    this.thx = await knex.transaction();
+    this.thx = await this._knex.transaction();
   }
 
   async commitTransaction() {
@@ -48,4 +39,4 @@ class Session {
   }
 }
 
-module.exports = Session;
+module.exports = BaseSession;
