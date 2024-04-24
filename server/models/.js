@@ -1,6 +1,6 @@
 const Repository = require('../repositories/Repository');
 
-class Model {
+class SpeciesModel {
   constructor(session) {
     this._speciesRepository = new Repository(session);
   }
@@ -9,17 +9,9 @@ class Model {
     return this._speciesRepository.getByFilter(filter, limitOptions);
   }
 
-  async create(speciesObject) {
-    return this._speciesRepository.create(speciesObject);
-  }
-
-  async update(speciesObject) {
-    return this._speciesRepository.update(speciesObject);
-  }
-
-  async getById(speciesId) {
-    return this._speciesRepository.getById(speciesId);
+  async getAllImageUrls(limitOptions) {
+    return this._speciesRepository.getAll('images', 'url');
   }
 }
 
-module.exports = Model;
+module.exports = SpeciesModel;

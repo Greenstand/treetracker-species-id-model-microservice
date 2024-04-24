@@ -7,6 +7,9 @@ class BaseRepository {
     this._session = session;
   }
 
+
+
+
   async getById(id) {
     const object = await this._session
       .getDB()
